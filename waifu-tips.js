@@ -45,7 +45,7 @@ function loadWidget(config) {
 		</div>`);
 	// https://stackoverflow.com/questions/24148403/trigger-css-transition-on-appended-element
 	setTimeout(() => {
-		document.getElementById("waifu");
+		document.getElementById("waifu").style.bottom = 0;
 	}, 0);
 
 	(function registerEventListener() {
@@ -143,7 +143,7 @@ function loadWidget(config) {
 		fetch("https://v1.hitokoto.cn")
 			.then(response => response.json())
 			.then(result => {
-				var text = `这句话是 <span>${result.creator}</span>向 梨花镇 投稿哒`;
+				var text = `这句一言是 <span>${result.creator}</span>投稿的。`;
 				showMessage(result.hitokoto, 6000, 9);
 				setTimeout(() => {
 					showMessage(text, 4000, 9);
@@ -301,7 +301,7 @@ function initWidget(config, apiPath = "/") {
                 $(".hide-live2d .keys").html("Hide"),
 		localStorage.removeItem("waifu-display"),
 				document.getElementById("waifu").style.display = "",
-				document.getElementById("waifu"),
+				document.getElementById("waifu").style.bottom = 0,
                 setCookie("live2d", "Hide", 7),
                 setCookie("dontwantlive2d", "no", 7)
         },
